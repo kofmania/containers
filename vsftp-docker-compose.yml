@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+  qbittorrent:
+    image: fauria/vsftpd:latest
+    container_name: vsftpd
+    environment:
+      - FTP_USER=***
+      - FTP_PASS=***
+      - PASV_MIN_PORT=21100
+      - PASV_MAX_PORT=21110
+    volumes:
+#      - /C/Users/kofmania/Downloads:/home/vsftpd/kofmania
+      - /F/OneDrive/사진/카메라 앨범/PhotoDB:/home/vsftpd/sylar/photo
+    ports:
+      - 20:20
+      - 21:21
+      - 21100-21110:21100-21110
+    restart: unless-stopped
