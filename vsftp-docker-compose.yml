@@ -1,6 +1,6 @@
 version: "2.1"
 services:
-  qbittorrent:
+  vsftp:
     image: fauria/vsftpd:latest
     container_name: vsftpd
     environment:
