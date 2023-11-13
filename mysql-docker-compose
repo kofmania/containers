@@ -14,4 +14,13 @@ services:
     ports:
       - 3356:3306
     volumes:
-      - /var/lib/mysql
+      - db_data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  db_data:
