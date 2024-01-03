@@ -1,4 +1,5 @@
-version: "2.1"
+version: "3"
+
 services:
   vsftp:
     image: fauria/vsftpd:latest
@@ -9,7 +10,7 @@ services:
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     volumes:
-#      - /C/Users/kofmania/Downloads:/home/vsftpd/kofmania
+      # - /C/Users/kofmania/Downloads:/home/vsftpd/kofmania
       - /F/OneDrive/사진/카메라 앨범/PhotoDB:/home/vsftpd/sylar/photo
     ports:
       - 20:20

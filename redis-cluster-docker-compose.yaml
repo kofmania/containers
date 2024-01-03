@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   redis-cluster:
@@ -14,7 +14,7 @@ services:
       - 6381:6381 # node-2
 
   redis-node-1:
-    network_mode: 'service:redis-cluster'
+    network_mode: "service:redis-cluster"
     image: redis
     container_name: redis-node1
     volumes:
@@ -23,7 +23,7 @@ services:
     restart: always
 
   redis-node-2:
-    network_mode: 'service:redis-cluster'
+    network_mode: "service:redis-cluster"
     image: redis
     container_name: redis-node2
     volumes:
@@ -32,7 +32,7 @@ services:
     restart: always
 
   redis-cluster-entry:
-    network_mode: 'service:redis-cluster'
+    network_mode: "service:redis-cluster"
     image: redis
     container_name: redis-cluster-entry
     command: redis-cli --cluster create 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 --cluster-yes
