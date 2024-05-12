@@ -1,5 +1,5 @@
 # Use root/example as user/password credentials
-version: "3.1"
+name: mysql-comp
 
 services:
   db:
@@ -23,3 +23,4 @@ services:
 
 volumes:
   db_data:
+    name: mysql-db-data

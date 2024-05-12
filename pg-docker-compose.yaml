@@ -1,5 +1,5 @@
 # Use postgres/example user/password credentials
-version: "3.1"
+name: pg-comp
 
 services:
   db:
@@ -18,7 +18,8 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8080
 
 volumes:
   db_data:
+    name: pg-db-data

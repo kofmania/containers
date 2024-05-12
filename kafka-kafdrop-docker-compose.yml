@@ -1,4 +1,4 @@
-version: "3"
+name: kafka-comp
 
 services:
   kafdrop:
@@ -10,7 +10,7 @@ services:
       KAFKA_BROKERCONNECT: "kafka:29092"
       JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
     depends_on:
-      - "kafka"
+      - kafka
 
   kafka:
     image: obsidiandynamics/kafka
