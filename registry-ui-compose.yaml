@@ -5,21 +5,17 @@ services:
     image: registry
     ports:
       - 5000:5000
-    networks:
-      - registry-net
+    volumes:
+      - ./registry-data:/var/lib/registry
+      - ./conf/registry-ui.yaml:/etc/docker/registry/config.yml
 
   ui:
     image: joxit/docker-registry-ui
     ports:
-      - 10080:80
+      - 10081:80
     environment:
-      - REGISTRY_TITLE=zemotion Private Docker Registry
-      - REGISTRY_URL=http://registry:5000
+      - REGISTRY_TITLE=My Private Docker Registry
+      - REGISTRY_URL=http://sylar-linux:5000
       - SINGLE_REGISTRY=true
     depends_on:
       - registry
-    networks:
-      registry-net:
-
-networks:
-  registry-net:
