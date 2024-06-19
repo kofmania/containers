@@ -9,7 +9,7 @@ services:
       - 8000:8000
     command: -jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/
     volumes:
-      - dynamo-data:/home/dynamodblocal/data
+      - dynamo_data:/home/dynamodblocal/data
     working_dir: /home/dynamodblocal
     user: root
 
@@ -27,5 +27,5 @@ services:
       - dynamodb
 
 volumes:
-  dynamo-data:
+  dynamo_data:
     name: "dynamo-data"
