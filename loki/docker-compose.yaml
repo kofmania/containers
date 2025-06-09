@@ -1,10 +1,13 @@
+name: grafana
+
 x-common: &common
+  pull_policy: always
   restart: unless-stopped
   networks:
-    - loki
+    - grafana
 
 networks:
-  loki:
+  grafana:
 
 services:
   prometheus:
@@ -13,7 +16,7 @@ services:
     container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - prom_data:/prometheus
+      - prom:/prometheus
     command: --config.file=/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
@@ -28,7 +31,7 @@ services:
     container_name: loki
     volumes:
       # - ./loki-config.yaml:/etc/loki/local-config.yaml
-      - loki_data:/loki
+      - loki:/loki
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
@@ -46,7 +49,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     volumes:
-      - grafana_data:/var/lib/grafana
+      - grafana:/var/lib/grafana
     environment:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
       - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -96,6 +99,6 @@ services:
       - 6379:6379
 
 volumes:
-  prom_data:
-  loki_data:
-  grafana_data:
+  prom:
+  loki:
+  grafana:
